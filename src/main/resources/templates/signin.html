@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+	<div class="container">
+	<div class="row">
+		<div class="col-md-8 offset-md-2">
+			<div class="my-card mt-3">
+				<h1 class="text-center">SignIn</h1>
+				<form id="login-form" class="form" th:action="@{/dologin}" method="post">
+					<div class="form-group">
+					<input type="email" placeholder="Enter your Email" name="username" class="form-control"/> 
+					</div>
+					<div class="form-group">
+					<input type="password" placeholder="Enter your password" name="password" class="form-control"/>
+					</div>
+					<a th:href="@{/forgotpassword}" style="color:#f76c28">Forgot Password</a>
+					<br><br>
+					<input type="submit" value = "Login" class = "button" />
+			    </form>
+			
+			<p class="newuser">
+				New User? <a class="newuserlink" th:href="@{/signup}">Create
+					an account</a>
+			</p>
+			</div>
+		</div>
+	</div>
+	</div>
+</section>
+</body>
+</html>

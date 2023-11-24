@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+  <head>
+     <!--Required meta tags--> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <!--Bootstrap CSS--> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+    <title th:text="${title}">Base html</title>
+  </head>
+  <body>
+  
+   <!--Navbar -->
+	  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+	  <a class="navbar-brand" th:href="@{#}">Smart Contact Manager</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav ml-auto">
+	      <ul class="navbar-nav ms-auto text-uppercase">
+        <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/normal/firstpage}">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link " href="#" th:href="@{/normal/profile}" ><span th:text="${name}"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/logout}" >Logout</a>
+        </li>
+      </ul>
+	    </ul>
+	    
+	  </div>
+	</nav>
+	
+	 <!--Navbar end -->
+	 <section>
+	<div class="card">
+			<div class="card-body">
+			<h1 class="text-center">Update Contact</h1>
+			
+			<div class="container-fluid mt-1">
+				<div class="row">
+					<div class="col-md-8 offset-md-2">
+					
+					<form action="#" th:object="${update_contact}" enctype="multipart/form-data" method="post"
+                              th:action="@{/normal/updatingcontact}" class="mt-2">
+                              <input type="hidden" th:field="${contact.cId}" /> 
+						<!-- First Name -->
+						<div class="input-group">
+						
+							<div class="input-group-prepend">
+							
+								<div class="input-group-text">Name
+									<i class="fa fa-plus"></i>
+								</div>	
+							</div>
+							<input type="text" id="firstName" name="name" 
+							placeholder="Enter Name here" class="form-control" required="required" th:value="${contact.name}"/>
+						</div>  
+						
+						<!-- Second Name -->
+						<div class="input-group mt-3">
+						
+							<div class="input-group-prepend">
+							
+								<div class="input-group-text">Nick Name
+									<i class="fas fa-user-alt"></i>
+								</div>	
+							</div>
+							<input type="text" id="secondName" name="secondname" 
+							placeholder="Enter Nick Name here" class="form-control" required="required" th:value="${contact.secondname}"/>
+						</div>
+						
+						<!-- Phone Field -->
+						<div class="input-group mt-3">
+						
+							<div class="input-group-prepend">
+							
+								<div class="input-group-text">Phone
+									<i class="fas fa-phone"></i>
+								</div>	
+							</div>
+							<input type="number" id="phone" name="phone" 
+							placeholder="Enter Phone Number here" class="form-control"  
+							required="required" min="10"  th:value="${contact.phone}"/>
+						</div>
+						
+						<!-- Email Field -->
+						<div class="input-group mt-3">
+						
+							<div class="input-group-prepend">
+							
+								<div class="input-group-text">
+									Email
+								</div>	
+							</div>
+							<input type="email" id="email" name="email" 
+							placeholder="Enter Email here" class="form-control" required="required" th:value="${contact.email}"/>
+						</div>
+						
+						<!-- Work Field -->
+						<div class="input-group mt-3">
+						
+							<div class="input-group-prepend">
+							
+								<div class="input-group-text">
+									<i class="fa fa-briefcase"></i>
+								</div>	
+							</div>
+							<input type="text" id="work" name="work" 
+							placeholder="Enter Work here" class="form-control" required="required" th:value="${contact.work}"/>
+						</div>
+						
+						<!-- Contact Description -->
+						<div class="form-group mt-3">
+							<textarea id="mytextarea" name="description" rows="10" class="form-control" 
+							placeholder="Enter Contact Description" th:text="${contact.description}"></textarea>
+						</div>
+						
+						<!-- Contact Image -->
+						<!--<div class="custom-file">
+							<input type="file" name="profileImage" />
+						</div>-->
+						
+						<div class="container text-center">
+							<button class="btn btn-outline-primary">Update Contact</button>
+						</div>
+					</form>
+					
+					
+					</div>
+				</div>
+			</div>
+			
+			</div>
+		
+		</div>
+    
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
+
+</section>
+  </body>
+</html>

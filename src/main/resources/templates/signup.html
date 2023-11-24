@@ -6,7 +6,66 @@
 </head>
 <body>
 <section>
-This is signup page
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 offset-md-2">
+			<div class="my-card mt-3">
+				<!-- <div th:if=${session.message} th:classappend="${session.message.type}" class="alert" role="alert">
+  					<p class="text-center" th:text="${session.message.content}"></p>
+				</div> -->
+				<h1 class="text-center">SignUp</h1>
+				<form action="/do_register" th:action="@{/do_register}" method="post" th:object="${user}">
+				
+					<!-- NAME -->
+					<div class="form-group">
+						    <label for="name-field">Name</label>
+						    <input type="text" th:value="${user.name}" name="name" class="form-control" id="name-field" aria-describedby="emailHelp" placeholder="Enter your name" required>
+				    </div>
+  					
+  					<!-- EMAIL -->
+					<div class="form-group">
+						    <label for="email-field">Email</label>
+						    <input type="email" name="email" class="form-control" id="email-field" aria-describedby="emailHelp" placeholder="Enter your email" required>
+						    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				    </div> 
+				    
+				    
+				    <!-- PASSWORD --> 
+				    <div class="form-group">
+						    <label for="password-field">Password</label>
+						    <input name="password" type="password" class="form-control" id="password-field" aria-describedby="emailHelp" placeholder="Enter your password" required>
+						    
+				    </div>
+				    <!-- CONFIRM PASSWORD --> 
+				    <div class="form-group">
+						    <label for="confirmpassword-field">Confirm Password</label>
+						    <input name="confirmpassword" type="password" class="form-control" id="confirmpassword-field" aria-describedby="emailHelp" placeholder="Enter confirm password" required>
+				    </div>
+				    
+				    <!-- ABOUT -->
+				    <div class="form-group">
+				    	<label for="about-field">About</label>
+				    	<textarea name="about" placeholder="Enter something about yourself" rows="10" class="form-control"></textarea>
+				    </div>
+				    
+				    <!-- AGREEMENT -->
+				    <div class="form-group form-check text-center">
+				    	<input type="checkbox" name="agreement" class="form-check-input" id="agreement" />
+				    	<label for="agreement">Accept terms and conditions</label>
+				    </div>
+				    <div class="container text-center">
+				    	
+				    	<button type="submit" class="btn bg-primary text=white">Submit</button>
+				    	<button type="reset" class="btn bg-warning text=white">Reset</button>
+				    </div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 </section>
+<script th:if="${errorMessage}">
+    alert('${errorMessage}');
+</script>
 </body>
 </html>
